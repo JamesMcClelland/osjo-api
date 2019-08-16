@@ -24,3 +24,10 @@ $api->version('v1', function ($api) {
         return ['test' => true];
     });
 });
+
+Route::resource('customers', 'Api\\CustomersController', ['except' => ['create', 'edit']]);
+Route::resource('addresses', 'Api\\AddressesController', ['except' => ['create', 'edit']]);
+Route::resource('jobs', 'Api\\JobsController', ['except' => ['create', 'edit']]);
+Route::resource('users', 'Api\\UsersController', ['except' => ['create', 'edit']]);
+Route::resource('job-schedule', 'Api\\JobScheduleController', ['except' => ['create', 'edit']]);
+Route::resource('companies', 'Api\\CompaniesController', ['except' => ['create', 'edit']]);

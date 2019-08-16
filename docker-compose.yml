@@ -15,6 +15,11 @@ services:
       - DB_DATABASE=osjo-api
       - DB_USERNAME=root
       - DB_PASSWORD=osjo-root-password
+      - API_STANDARDS_TREE=vnd
+      - API_SUBTYPE=osjo
+      - API_PREFIX=api
+      - API_VERSION=v1
+      - API_DEBUG=true
 
   database:
     image: mysql:8
