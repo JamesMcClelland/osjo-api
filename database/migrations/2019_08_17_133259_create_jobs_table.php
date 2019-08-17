@@ -14,11 +14,11 @@ class CreateJobsTable extends Migration {
 	{
 		Schema::create('jobs', function(Blueprint $table)
 		{
-			$table->integer('id', true);
-			$table->integer('customer_id')->index('job_customer');
-			$table->integer('customer_person_id')->nullable()->index('job_person');
-			$table->integer('customer_address_id')->index('job_address');
-			$table->integer('job_type_id')->index('jobs_type');
+			$table->increments('id');
+            $table->integer('customer_id', false, true)->index('job_customer');
+			$table->integer('customer_person_id', false, true)->nullable()->index('job_person');
+			$table->integer('customer_address_id', false, true)->index('job_address');
+			$table->integer('job_type_id', false, true)->index('jobs_type');
 			$table->date('due_date');
 			$table->dateTime('completed_at')->nullable();
 			$table->timestamps();

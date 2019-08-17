@@ -14,9 +14,9 @@ class CreateCustomerAddressesTable extends Migration {
 	{
 		Schema::create('customer_addresses', function(Blueprint $table)
 		{
-			$table->integer('id', true);
-			$table->integer('customer_id')->index('cusa_customer');
-			$table->integer('address_id')->index('cusa_address');
+			$table->increments('id');
+            $table->integer('customer_id', false, true)->index('cusa_customer');
+			$table->integer('address_id', false, true)->index('cusa_address');
 			$table->timestamps();
 		});
 	}

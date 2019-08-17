@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateForeignKeys extends Migration
+class CreatePeopleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,14 @@ class CreateForeignKeys extends Migration
      */
     public function up()
     {
-        Schema::create('foreign_keys', function (Blueprint $table) {
+        Schema::create('people', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string("first_name");
+            $table->string("last_name");
+            $table->string("primary_phone");
+            $table->string("secondary_phone");
+            $table->string("email");
+            $table->json("meta");
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ class CreateForeignKeys extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('foreign_keys');
+        Schema::dropIfExists('people');
     }
 }

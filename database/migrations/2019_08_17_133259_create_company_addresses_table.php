@@ -14,9 +14,9 @@ class CreateCompanyAddressesTable extends Migration {
 	{
 		Schema::create('company_addresses', function(Blueprint $table)
 		{
-			$table->integer('id', true);
-			$table->integer('company_id')->index('ca_company');
-			$table->integer('address_id')->index('ca_address');
+			$table->increments('id');
+			$table->integer('company_id', false, true)->index('ca_company');
+            $table->integer('address_id', false, true)->index('ca_address');
 			$table->timestamps();
 		});
 	}

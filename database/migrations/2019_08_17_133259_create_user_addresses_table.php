@@ -15,8 +15,8 @@ class CreateUserAddressesTable extends Migration {
 		Schema::create('user_addresses', function(Blueprint $table)
 		{
 			$table->integer('id');
-			$table->integer('user_id')->index('ua_user');
-			$table->integer('address_id')->index('ua_address');
+            $table->integer('user_id', false, true)->index('ua_user');
+			$table->integer('address_id', false, true)->index('ua_address');
 			$table->timestamps();
 		});
 	}

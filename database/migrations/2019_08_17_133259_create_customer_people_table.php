@@ -14,9 +14,9 @@ class CreateCustomerPeopleTable extends Migration {
 	{
 		Schema::create('customer_people', function(Blueprint $table)
 		{
-			$table->integer('id', true);
-			$table->integer('customer_id');
-			$table->integer('person_id');
+			$table->increments('id');
+            $table->integer('customer_id', false, true);
+			$table->integer('person_id', false, true);
 			$table->timestamps();
 		});
 	}
