@@ -14,10 +14,10 @@ class Customer extends Model
     protected $table = 'customers';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -27,5 +27,5 @@ class Customer extends Model
      */
     protected $fillable = ['name'];
 
-    
+
 }

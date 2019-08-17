@@ -4,20 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Job extends Model
+class Address extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'jobs';
+    protected $table = 'addresses';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -25,7 +25,7 @@ class Job extends Model
      *
      * @var array
      */
-    protected $fillable = ['customer_person_id', 'customer_address_id', 'job_type_id', 'customer_id', 'due_date', 'completed_at', 'title', 'description'];
+    protected $fillable = ['organisation_name', 'line_1', 'line_2', 'town', 'country', 'postcode'];
 
-    
+
 }

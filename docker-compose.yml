@@ -27,6 +27,8 @@ services:
       - MYSQL_USER=osjo
       - MYSQL_DATABASE=osjo-api
       - MYSQL_ROOT_PASSWORD=osjo-root-password
+    ports:
+      - 3306:3306
       # docker-compose exec database bash
       #mysql -u root -p
       #ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'osjo-root-password';
