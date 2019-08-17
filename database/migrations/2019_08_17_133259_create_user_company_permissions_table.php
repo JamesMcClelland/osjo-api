@@ -14,10 +14,10 @@ class CreateUserCompanyPermissionsTable extends Migration {
 	{
 		Schema::create('user_company_permissions', function(Blueprint $table)
 		{
-			$table->integer('id', true);
-			$table->integer('company_id')->index('ucp_company');
-			$table->integer('user_id')->index('ucp_user');
-			$table->integer('permission_id')->index('ucp_permission');
+			$table->increments('id');
+            $table->integer('company_id', false, true)->index('ucp_company');
+			$table->integer('user_id', false, true)->index('ucp_user');
+			$table->integer('permission_id', false, true)->index('ucp_permission');
 			$table->softDeletes();
 			$table->timestamps();
 		});

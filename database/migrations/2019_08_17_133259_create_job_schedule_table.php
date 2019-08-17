@@ -14,9 +14,9 @@ class CreateJobScheduleTable extends Migration {
 	{
 		Schema::create('job_schedule', function(Blueprint $table)
 		{
-			$table->integer('id', true);
-			$table->integer('job_id')->index('jobsc_job');
-			$table->integer('user_id')->index('jobsc_user');
+			$table->increments('id');
+            $table->integer('job_id', false, true)->index('jobsc_job');
+			$table->integer('user_id', false, true)->index('jobsc_user');
 			$table->dateTime('scheduled_time');
 			$table->integer('job_length')->nullable()->default(30);
 			$table->timestamps();

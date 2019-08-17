@@ -38,4 +38,9 @@ class CustomerPerson extends Eloquent
 	{
 		return $this->hasMany(\App\Models\Job::class);
 	}
+
+    public function person()
+    {
+        return $this->belongsTo(\App\Models\Person::class);
+    }
 }
