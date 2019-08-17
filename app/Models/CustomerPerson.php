@@ -24,7 +24,10 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class CustomerPerson extends Eloquent
 {
-	protected $casts = [
+
+    protected $guard_name = 'api';
+
+    protected $casts = [
 		'customer_id' => 'int',
 		'person_id' => 'int'
 	];

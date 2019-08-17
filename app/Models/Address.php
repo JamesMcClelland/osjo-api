@@ -33,7 +33,9 @@ class Address extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
-	protected $fillable = [
+    protected $guard_name = 'api';
+
+    protected $fillable = [
 		'organisation_name',
 		'line_1',
 		'line_2',

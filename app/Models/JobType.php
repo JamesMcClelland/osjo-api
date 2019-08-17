@@ -25,13 +25,11 @@ class JobType extends Eloquent
 {
 	public $timestamps = false;
 
-	protected $dates = [
-		'updated_At'
-	];
+    protected $guard_name = 'api';
+
 
 	protected $fillable = [
 		'type',
-		'updated_At'
 	];
 
 	public function jobs()

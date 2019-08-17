@@ -29,7 +29,9 @@ class Company extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
-	protected $casts = [
+    protected $guard_name = 'api';
+
+    protected $casts = [
 		'size' => 'int'
 	];
 

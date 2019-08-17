@@ -37,7 +37,9 @@ class Job extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
-	protected $casts = [
+    protected $guard_name = 'api';
+
+    protected $casts = [
 		'customer_id' => 'int',
 		'customer_person_id' => 'int',
 		'customer_address_id' => 'int',

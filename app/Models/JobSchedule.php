@@ -29,7 +29,9 @@ class JobSchedule extends Eloquent
 {
 	protected $table = 'job_schedule';
 
-	protected $casts = [
+    protected $guard_name = 'api';
+
+    protected $casts = [
 		'job_id' => 'int',
 		'user_id' => 'int',
 		'job_length' => 'int'

@@ -16,8 +16,7 @@ class CreateJobTypesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('type', 32)->unique('job_types_type_uindex');
-			$table->dateTime('created_at');
-			$table->dateTime('updated_At');
+            $table->timestamps();
 		});
 	}
 
