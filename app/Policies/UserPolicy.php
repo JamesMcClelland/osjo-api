@@ -17,7 +17,6 @@ class UserPolicy
      */
     public function viewAny(User $user)
     {
-        //Todo return only lower users
         return $user->hasPermissionTo('view lower user');
     }
 
