@@ -25,7 +25,10 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class CompanyAddress extends Eloquent
 {
-	protected $casts = [
+
+    protected $guard_name = 'api';
+
+    protected $casts = [
 		'company_id' => 'int',
 		'address_id' => 'int'
 	];

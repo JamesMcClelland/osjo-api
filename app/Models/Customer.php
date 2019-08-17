@@ -27,7 +27,9 @@ class Customer extends Eloquent
 {
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
-	protected $fillable = [
+    protected $guard_name = 'api';
+
+    protected $fillable = [
 		'name'
 	];
 

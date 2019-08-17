@@ -7,10 +7,25 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
+/**
+ * Class User
+ * @package App\Models
+ * @property string $email
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $password
+ * @property boolean $disabled
+ * @property string $last_login
+ * @property integer $access_level
+ * @property string $remember_token
+ */
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
     use HasRoles;
+
+    protected $guard_name = 'api';
+
     /**
      * The database table used by the model.
      *
