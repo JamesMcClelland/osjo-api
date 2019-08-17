@@ -29,6 +29,12 @@ class AuthController extends Controller
     {
         $credentials = request(['email', 'password']);
 
+        $user = User::where('email', request('email'))->firstOrFail();
+
+        if ($user->disabled !== 0) {
+            return response()->json(['error' => 'Unauthorized - This account is disabled'], 401);
+        }
+
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
