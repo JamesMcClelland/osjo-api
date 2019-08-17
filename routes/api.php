@@ -13,9 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
 
 $api = app('Dingo\Api\Routing\Router');
 
@@ -23,11 +23,21 @@ $api->version('v1', function ($api) {
     $api->get('/', function() {
         return ['test' => true];
     });
-});
 
-Route::resource('customers', 'Api\\CustomersController', ['except' => ['create', 'edit']]);
-Route::resource('addresses', 'Api\\AddressesController', ['except' => ['create', 'edit']]);
-Route::resource('jobs', 'Api\\JobsController', ['except' => ['create', 'edit']]);
-Route::resource('users', 'Api\\UsersController', ['except' => ['create', 'edit']]);
-Route::resource('job-schedule', 'Api\\JobScheduleController', ['except' => ['create', 'edit']]);
-Route::resource('companies', 'Api\\CompaniesController', ['except' => ['create', 'edit']]);
+    $api->group(['prefix' => 'auth'], function ($api) {
+        $api->post('login', 'App\Http\Controllers\AuthController@login');
+        $api->post('logout', 'App\Http\Controllers\AuthController@logout');
+        $api->post('refresh', 'App\Http\Controllers\AuthController@refresh');
+        $api->post('me', 'App\Http\Controllers\AuthController@me');
+    });
+
+    $api->group(['middleware' => 'auth'], function ($api) {
+        $api->resource('customers', 'App\Http\Controllers\Api\CustomersController', ['except' => ['create', 'edit']]);
+        $api->resource('addresses', 'App\Http\Controllers\Api\AddressesController', ['except' => ['create', 'edit']]);
+        $api->resource('jobs', 'App\Http\Controllers\Api\JobsController', ['except' => ['create', 'edit']]);
+        $api->resource('users', 'App\Http\Controllers\Api\UsersController', ['except' => ['create', 'edit']]);
+        $api->resource('job-schedule', 'App\Http\Controllers\Api\JobScheduleController', ['except' => ['create', 'edit']]);
+        $api->resource('companies', 'App\Http\Controllers\Api\CompaniesController', ['except' => ['create', 'edit']]);
+    });
+
+});

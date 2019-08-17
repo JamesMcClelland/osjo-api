@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::middleware('web')->post('register', 'AuthController@register');

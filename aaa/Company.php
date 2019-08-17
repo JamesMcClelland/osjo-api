@@ -14,10 +14,10 @@ class Company extends Model
     protected $table = 'companies';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -27,5 +27,5 @@ class Company extends Model
      */
     protected $fillable = ['name', 'size'];
 
-    
+
 }
