@@ -90,6 +90,23 @@ class UsersController extends Controller
      * @return Response
      * @throws AuthorizationException
      */
+    public function disable($id)
+    {
+        $user = User::findOrFail($id);
+        $this->authorize('disable', $user);
+        User::destroy($id);
+
+        return response()->json(null, 204);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     *
+     * @return Response
+     * @throws AuthorizationException
+     */
     public function destroy($id)
     {
         $user = User::findOrFail($id);

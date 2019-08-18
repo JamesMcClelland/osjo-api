@@ -7,6 +7,9 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -17,30 +20,32 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $customer_person_id
  * @property int $customer_address_id
  * @property int $job_type_id
- * @property \Carbon\Carbon $due_date
- * @property \Carbon\Carbon $completed_at
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property int $worker_id
+ * @property Carbon $due_date
+ * @property Carbon $completed_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  * @property string $deleted_at
  * @property string $title
  * @property string $description
  * 
- * @property \App\Models\CustomerAddress $customer_address
- * @property \App\Models\Customer $customer
- * @property \App\Models\CustomerPerson $customer_person
- * @property \App\Models\JobType $job_type
- * @property \Illuminate\Database\Eloquent\Collection $job_schedules
+ * @property CustomerAddress $customer_address
+ * @property Customer $customer
+ * @property CustomerPerson $customer_person
+ * @property JobType $job_type
+ * @property Collection $job_schedules
  *
  * @package App\Models
  */
 class Job extends Eloquent
 {
-	use \Illuminate\Database\Eloquent\SoftDeletes;
+	use SoftDeletes;
 
     protected $guard_name = 'api';
 
     protected $casts = [
 		'customer_id' => 'int',
+		'worker_id' => 'int',
 		'customer_person_id' => 'int',
 		'customer_address_id' => 'int',
 		'job_type_id' => 'int'
@@ -64,26 +69,26 @@ class Job extends Eloquent
 
 	public function customer_address()
 	{
-		return $this->belongsTo(\App\Models\CustomerAddress::class);
+		return $this->belongsTo(CustomerAddress::class);
 	}
 
 	public function customer()
 	{
-		return $this->belongsTo(\App\Models\Customer::class);
+		return $this->belongsTo(Customer::class);
 	}
 
 	public function customer_person()
 	{
-		return $this->belongsTo(\App\Models\CustomerPerson::class);
+		return $this->belongsTo(CustomerPerson::class);
 	}
 
 	public function job_type()
 	{
-		return $this->belongsTo(\App\Models\JobType::class);
+		return $this->belongsTo(JobType::class);
 	}
 
 	public function job_schedules()
 	{
-		return $this->hasMany(\App\Models\JobSchedule::class);
+		return $this->hasMany(JobSchedule::class);
 	}
 }
