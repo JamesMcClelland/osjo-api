@@ -10,6 +10,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 /**
  * Class User
  * @package App\Models
+ * @property int $id
  * @property string $email
  * @property string $first_name
  * @property string $last_name

@@ -62,9 +62,14 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        return
+        return (
             $user->hasPermissionTo('edit lower user') &&
-            $model->access_level < $user->access_level;
+            $model->access_level < $user->access_level
+        ) || (
+            $user->hasPermissionTo('edit own user') &&
+            $user->id === $model->id
+        )
+            ;
     }
 
     /**
@@ -78,6 +83,20 @@ class UserPolicy
     {
         return
             $user->hasPermissionTo('edit lower user') &&
+            $model->access_level < $user->access_level;
+    }
+
+    /**
+     * Determine whether the user can disable the user.
+     *
+     * @param User $user
+     * @param User $model
+     * @return mixed
+     */
+    public function disable(User $user, User $model)
+    {
+        return
+            $user->hasPermissionTo('disable lower user') &&
             $model->access_level < $user->access_level;
     }
 

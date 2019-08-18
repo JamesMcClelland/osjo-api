@@ -21,31 +21,32 @@ class PermissionAssignmentsSeeder extends Seeder
 
         $workerRole = Role::findByName('Worker');
         $workerRole->givePermissionTo([
-            'edit own jobs',
-            'view own jobs',
-            'view own_jobs_schedule',
+            'edit own job',
+            'view own job',
+            'view own job_schedule',
         ]);
 
         $officeRole = Role::findByName('Office');
         $officeRole->givePermissionTo([
-            'edit jobs',
-            'view jobs',
-            'create jobs',
-            'edit jobs_schedule',
-            'view jobs_schedule',
-            'create jobs_schedule',
-            'view customers',
-            'edit customers',
-            'create customers',
-            'view customer_address',
-            'edit customer_address',
-            'create customer_address',
-            'view customer_person',
-            'edit customer_person',
-            'create customer_person',
-            'view person',
-            'edit person',
-            'create person',
+            'edit job',
+            'view job',
+            'create job',
+            'delete job',
+            'edit job_schedule',
+            'view job_schedule',
+            'create job_schedule',
+            'view customer',//Todo
+            'edit customer',//Todo
+            'create customer',//Todo
+            'view customer_address',//Todo
+            'edit customer_address',//Todo
+            'create customer_address',//Todo
+            'view customer_person',//Todo
+            'edit customer_person',//Todo
+            'create customer_person',//Todo
+            'view person',//Todo
+            'edit person',//Todo
+            'create person',//Todo
         ]);
 
         $userManagementRole = Role::findByName('User Management');
@@ -58,12 +59,12 @@ class PermissionAssignmentsSeeder extends Seeder
 
         $companyManagementRole = Role::findByName('Company Management');
         $companyManagementRole->givePermissionTo([
-            'edit company',
-            'view company',
-            'create company',
-            'edit company_address',
-            'view company_address',
-            'create company_address',
+            'edit company',//Todo
+            'view company',//Todo
+            'create company',//Todo
+            'edit company_address',//Todo
+            'view company_address',//Todo
+            'create company_address',//Todo
         ]);
     }
 }
