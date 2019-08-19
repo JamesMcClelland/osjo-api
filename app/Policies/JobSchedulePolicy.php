@@ -69,7 +69,7 @@ class JobSchedulePolicy
      */
     public function delete(User $user, JobSchedule $jobSchedule)
     {
-        return $user->hasPermissionTo('delete job_schedule');
+        return false;
     }
 
     /**
@@ -81,7 +81,7 @@ class JobSchedulePolicy
      */
     public function restore(User $user, JobSchedule $jobSchedule)
     {
-        return $user->hasPermissionTo('edit job_schedule');
+        return false;
     }
 
     /**
