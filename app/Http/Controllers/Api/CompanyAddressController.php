@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Models\Customer;
+use App\Models\CompanyAddress;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class CustomersController extends Controller
+class CompanyAddressController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +21,7 @@ class CustomersController extends Controller
     public function index(Request $request)
     {
         $this->authorize('viewAny');
-        $posts = Company::latest()->paginate(25);
+        $posts = CompanyAddress::latest()->paginate(25);
 
         return $posts;
     }
@@ -37,7 +37,7 @@ class CustomersController extends Controller
     public function store(Request $request)
     {
         $this->authorize('create');
-        $post = Company::create($request->all());
+        $post = CompanyAddress::create($request->all());
 
         return response()->json($post, 201);
     }
@@ -53,7 +53,7 @@ class CustomersController extends Controller
     public function show($id)
     {
         $this->authorize('view');
-        $post = Company::findOrFail($id);
+        $post = CompanyAddress::findOrFail($id);
 
         return $post;
     }
@@ -70,7 +70,7 @@ class CustomersController extends Controller
     public function update(Request $request, $id)
     {
         $this->authorize('edit');
-        $post = Company::findOrFail($id);
+        $post = CompanyAddress::findOrFail($id);
         $post->update($request->all());
 
         return response()->json($post, 200);
@@ -87,7 +87,7 @@ class CustomersController extends Controller
     public function destroy($id)
     {
         $this->authorize('delete');
-        Company::destroy($id);
+        CompanyAddress::destroy($id);
 
         return response()->json(null, 204);
     }

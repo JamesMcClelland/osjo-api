@@ -35,9 +35,12 @@ class PermissionAssignmentsSeeder extends Seeder
             'edit job_schedule',
             'view job_schedule',
             'create job_schedule',
-            'view customer',//Todo
-            'edit customer',//Todo
-            'create customer',//Todo
+            'view customer',
+            'edit customer',
+            'create customer',
+            'view address',//Todo
+            'edit address',//Todo
+            'create address',//Todo
             'view customer_address',//Todo
             'edit customer_address',//Todo
             'create customer_address',//Todo

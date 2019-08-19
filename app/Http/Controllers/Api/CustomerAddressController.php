@@ -5,23 +5,19 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Models\Customer;
-use Illuminate\Auth\Access\AuthorizationException;
+use App\CustomerAddress;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
-class CustomersController extends Controller
+class CustomerAddressController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return Response
-     * @throws AuthorizationException
+     * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        $this->authorize('viewAny');
-        $posts = Company::latest()->paginate(25);
+        $posts = CustomerAddress::latest()->paginate(25);
 
         return $posts;
     }
@@ -29,15 +25,14 @@ class CustomersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param \Illuminate\Http\Request $request
      *
-     * @return Response
-     * @throws AuthorizationException
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $this->authorize('create');
-        $post = Company::create($request->all());
+        
+        $post = CustomerAddress::create($request->all());
 
         return response()->json($post, 201);
     }
@@ -45,15 +40,13 @@ class CustomersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      *
-     * @return Response
-     * @throws AuthorizationException
+     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $this->authorize('view');
-        $post = Company::findOrFail($id);
+        $post = CustomerAddress::findOrFail($id);
 
         return $post;
     }
@@ -61,16 +54,15 @@ class CustomersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param int $id
+     * @param \Illuminate\Http\Request $request
+     * @param  int  $id
      *
-     * @return Response
-     * @throws AuthorizationException
+     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $this->authorize('edit');
-        $post = Company::findOrFail($id);
+        
+        $post = CustomerAddress::findOrFail($id);
         $post->update($request->all());
 
         return response()->json($post, 200);
@@ -79,15 +71,13 @@ class CustomersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param  int  $id
      *
-     * @return Response
-     * @throws AuthorizationException
+     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $this->authorize('delete');
-        Company::destroy($id);
+        CustomerAddress::destroy($id);
 
         return response()->json(null, 204);
     }
