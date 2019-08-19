@@ -7,6 +7,9 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
@@ -14,18 +17,18 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * 
  * @property int $id
  * @property string $name
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  * @property string $deleted_at
  * 
- * @property \Illuminate\Database\Eloquent\Collection $addresses
- * @property \Illuminate\Database\Eloquent\Collection $jobs
+ * @property Collection $addresses
+ * @property Collection $jobs
  *
  * @package App\Models
  */
 class Customer extends Eloquent
 {
-	use \Illuminate\Database\Eloquent\SoftDeletes;
+	use SoftDeletes;
 
     protected $guard_name = 'api';
 
@@ -35,13 +38,13 @@ class Customer extends Eloquent
 
 	public function addresses()
 	{
-		return $this->belongsToMany(\App\Models\Address::class, 'customer_addresses')
+		return $this->belongsToMany(Address::class, 'customer_addresses')
 					->withPivot('id')
 					->withTimestamps();
 	}
 
 	public function jobs()
 	{
-		return $this->hasMany(\App\Models\Job::class);
+		return $this->hasMany(Job::class);
 	}
 }
