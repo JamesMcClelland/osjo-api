@@ -13,7 +13,7 @@ class PermissionsTableSeeder extends Seeder
         'view own user',
         'edit own job',
         'view own job',
-        'view own_job_schedule',
+        'view own job_schedule',
         'edit job',
         'view job',
         'create job',

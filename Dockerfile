@@ -12,4 +12,4 @@ RUN composer global require hirak/prestissimo
 COPY . /app
 WORKDIR /app
 RUN composer install
-CMD php artisan serve --host=0.0.0.0
+CMD composer install && php artisan migrate && php artisan serve --host=0.0.0.0
