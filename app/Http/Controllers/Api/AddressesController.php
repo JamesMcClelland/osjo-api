@@ -15,9 +15,11 @@ class AddressesController extends Controller
      * Display a listing of the resource.
      *
      * @return Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function index(Request $request)
     {
+        $this->authorize('viewAny');
         $addresses = Address::latest()->paginate(25);
 
         return $addresses;
@@ -29,10 +31,11 @@ class AddressesController extends Controller
      * @param Request $request
      *
      * @return Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(Request $request)
     {
-        
+        $this->authorize('create');
         $address = Address::create($request->all());
 
         return response()->json($address, 201);
@@ -41,12 +44,14 @@ class AddressesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show($id)
     {
+        $this->authorize('view');
         $address = Address::findOrFail($id);
 
         return $address;
@@ -56,13 +61,14 @@ class AddressesController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(Request $request, $id)
     {
-        
+        $this->authorize('edit');
         $address = Address::findOrFail($id);
         $address->update($request->all());
 
@@ -72,12 +78,14 @@ class AddressesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy($id)
     {
+        $this->authorize('delete');
         Address::destroy($id);
 
         return response()->json(null, 204);
