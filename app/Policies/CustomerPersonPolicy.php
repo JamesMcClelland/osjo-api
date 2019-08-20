@@ -30,7 +30,7 @@ class CustomerPersonPolicy
      */
     public function view(User $user, CustomerPerson $customerPerson)
     {
-        //
+        return $user->hasPermissionTo('view customer_person');
     }
 
     /**
@@ -41,7 +41,7 @@ class CustomerPersonPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->hasPermissionTo('create customer_person');
     }
 
     /**
@@ -53,7 +53,7 @@ class CustomerPersonPolicy
      */
     public function update(User $user, CustomerPerson $customerPerson)
     {
-        //
+        return $user->hasPermissionTo('edit customer_person');
     }
 
     /**
@@ -65,7 +65,7 @@ class CustomerPersonPolicy
      */
     public function delete(User $user, CustomerPerson $customerPerson)
     {
-        //
+        return false;
     }
 
     /**
@@ -77,7 +77,7 @@ class CustomerPersonPolicy
      */
     public function restore(User $user, CustomerPerson $customerPerson)
     {
-        //
+        return false;
     }
 
     /**
@@ -89,6 +89,6 @@ class CustomerPersonPolicy
      */
     public function forceDelete(User $user, CustomerPerson $customerPerson)
     {
-        //
+        return false;
     }
 }
