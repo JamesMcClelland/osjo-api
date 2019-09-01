@@ -7,7 +7,11 @@
 
 namespace App\Models;
 
-use Reliese\Database\Eloquent\Model as Eloquent;
+use Carbon\Carbon;
+use Eloquent;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Reliese\Database\Eloquent\Model;
 
 /**
  * Class Address
@@ -19,19 +23,21 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $town
  * @property string $county
  * @property string $postcode
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  * @property string $deleted_at
  * 
- * @property \Illuminate\Database\Eloquent\Collection $companies
- * @property \Illuminate\Database\Eloquent\Collection $customers
- * @property \Illuminate\Database\Eloquent\Collection $users
+ * @property Collection $companies
+ * @property Collection $customers
+ * @property Collection $users
  *
  * @package App\Models
+ *
+ * @mixin Eloquent
  */
-class Address extends Eloquent
+class Address extends Model
 {
-	use \Illuminate\Database\Eloquent\SoftDeletes;
+	use SoftDeletes;
 
     protected $guard_name = 'api';
 
@@ -46,21 +52,21 @@ class Address extends Eloquent
 
 	public function companies()
 	{
-		return $this->belongsToMany(\App\Models\Company::class, 'company_addresses')
+		return $this->belongsToMany(Company::class, 'company_addresses')
 					->withPivot('id')
 					->withTimestamps();
 	}
 
 	public function customers()
 	{
-		return $this->belongsToMany(\App\Models\Customer::class, 'customer_addresses')
+		return $this->belongsToMany(Customer::class, 'customer_addresses')
 					->withPivot('id')
 					->withTimestamps();
 	}
 
 	public function users()
 	{
-		return $this->belongsToMany(\App\Models\User::class, 'user_addresses')
+		return $this->belongsToMany(User::class, 'user_addresses')
 					->withPivot('id')
 					->withTimestamps();
 	}
