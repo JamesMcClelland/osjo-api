@@ -20,6 +20,7 @@ services:
       - API_PREFIX=api
       - API_VERSION=v1
       - API_DEBUG=true
+      - JWT_SECRET=uGTDx9q1FcjTr0EMirYj148ZNXILFQCITgeMrMxDGIRrh0O2ToVb1QZ0uAmcz88e
 
   database:
     image: mysql:8

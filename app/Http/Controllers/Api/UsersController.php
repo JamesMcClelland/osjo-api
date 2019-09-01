@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
@@ -67,7 +68,7 @@ class UsersController extends Controller
      *
      * @param int $id
      *
-     * @return Response
+     * @return UserResource
      * @throws AuthorizationException
      * @authenticated
      */
@@ -76,7 +77,7 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
         $this->authorize('view', $user);
 
-        return $user;
+        return new UserResource($user);
     }
 
     /**

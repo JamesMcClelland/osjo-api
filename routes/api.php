@@ -20,6 +20,7 @@ $api->version('v1', function (Router $api) {
         $api->resource('addresses', 'App\Http\Controllers\Api\AddressesController', ['except' => ['create', 'edit']]);
         $api->resource('jobs', 'App\Http\Controllers\Api\JobsController', ['except' => ['create', 'edit']]);
         $api->resource('users', 'App\Http\Controllers\Api\UsersController', ['except' => ['create', 'edit']]);
+        $api->resource('people', 'App\Http\Controllers\Api\PeopleController', ['except' => ['create', 'edit']]);
         $api->resource('job-schedule', 'App\Http\Controllers\Api\JobScheduleController', ['except' => ['create', 'edit']]);
         $api->resource('companies', 'App\Http\Controllers\Api\CompaniesController', ['except' => ['create', 'edit']]);
     });
