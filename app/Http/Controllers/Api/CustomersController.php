@@ -10,13 +10,19 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+/**
+ * @group Customer management
+ * Class CustomersController
+ * @package App\Http\Controllers\Api
+ */
 class CustomersController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all addresses
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
      */
     public function index(Request $request)
     {
@@ -27,12 +33,14 @@ class CustomersController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a new customer
      *
      * @param Request $request
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
+     * @bodyParam name string required The customers name
      */
     public function store(Request $request)
     {
@@ -43,12 +51,13 @@ class CustomersController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display a customer
      *
      * @param int $id
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
      */
     public function show($id)
     {
@@ -59,13 +68,15 @@ class CustomersController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a customer
      *
      * @param Request $request
      * @param int $id
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
+     * @bodyParam name string required The customers name
      */
     public function update(Request $request, $id)
     {
@@ -77,12 +88,13 @@ class CustomersController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Soft delete a customer
      *
      * @param int $id
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
      */
     public function destroy($id)
     {

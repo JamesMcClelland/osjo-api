@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
+/**
+ * @group Authentication functionality
+ * Class AuthController
+ * @package App\Http\Controllers
+ */
 class AuthController extends Controller
 {
     /**
@@ -46,6 +51,7 @@ class AuthController extends Controller
      * Get the authenticated User.
      *
      * @return JsonResponse
+     * @authenticated
      */
     public function me()
     {
@@ -68,6 +74,7 @@ class AuthController extends Controller
      * Refresh a token.
      *
      * @return JsonResponse
+     * @authenticated
      */
     public function refresh()
     {

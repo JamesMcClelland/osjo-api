@@ -38,18 +38,18 @@ class PermissionAssignmentsSeeder extends Seeder
             'view customer',
             'edit customer',
             'create customer',
-            'view address',//Todo
-            'edit address',//Todo
-            'create address',//Todo
-            'view customer_address',//Todo
-            'edit customer_address',//Todo
-            'create customer_address',//Todo
-            'view customer_person',//Todo
-            'edit customer_person',//Todo
-            'create customer_person',//Todo
-            'view person',//Todo
-            'edit person',//Todo
-            'create person',//Todo
+            'view address',
+            'edit address',
+            'create address',
+            'view customer_address',
+            'edit customer_address',
+            'create customer_address',
+            'view customer_person',
+            'edit customer_person',
+            'create customer_person',
+            'view person',
+            'edit person',
+            'create person',
         ]);
 
         $userManagementRole = Role::findByName('User Management');
@@ -62,12 +62,12 @@ class PermissionAssignmentsSeeder extends Seeder
 
         $companyManagementRole = Role::findByName('Company Management');
         $companyManagementRole->givePermissionTo([
-            'edit company',//Todo
-            'view company',//Todo
-            'create company',//Todo
-            'edit company_address',//Todo
-            'view company_address',//Todo
-            'create company_address',//Todo
+            'edit company',
+            'view company',
+            'create company',
+            'edit company_address',
+            'view company_address',
+            'create company_address',
         ]);
     }
 }

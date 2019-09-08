@@ -6,18 +6,25 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Job;
+use Carbon\Carbon;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+/**
+ * @group Job management
+ * Class JobsController
+ * @package App\Http\Controllers\Api
+ */
 class JobsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all jobs
      *
      * @param Request $request
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
      */
     public function index(Request $request)
     {
@@ -28,12 +35,21 @@ class JobsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a new job
      *
      * @param Request $request
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
+     * @bodyParam customer_id int required The customer that the job is for
+     * @bodyParam customer_person_id int required The person that is going to be communicated with for this job
+     * @bodyParam customer_address_id int required The address that the job will take place
+     * @bodyParam job_type_id int required The type of the job, see job types for options
+     * @bodyParam due_date Carbon required The date that the job is due
+     * @bodyParam completed_at Carbon The date that the job was competed (if in past)
+     * @bodyParam title string required The simple title for the job
+     * @bodyParam description string The outline of what the job requirements are
      */
     public function store(Request $request)
     {
@@ -44,12 +60,13 @@ class JobsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display a job
      *
      * @param int $id
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
      */
     public function show($id)
     {
@@ -60,13 +77,22 @@ class JobsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a job
      *
      * @param Request $request
      * @param int $id
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
+     * @bodyParam customer_id int The customer that the job is for
+     * @bodyParam customer_person_id int The person that is going to be communicated with for this job
+     * @bodyParam customer_address_id int The address that the job will take place
+     * @bodyParam job_type_id int The type of the job, see job types for options
+     * @bodyParam due_date Carbon The date that the job is due
+     * @bodyParam completed_at Carbon The date that the job was competed (if in past)
+     * @bodyParam title string The simple title for the job
+     * @bodyParam description string The outline of what the job requirements are
      */
     public function update(Request $request, $id)
     {
@@ -78,12 +104,13 @@ class JobsController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Soft delete a job
      *
      * @param int $id
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
      */
     public function destroy($id)
     {

@@ -11,14 +11,20 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * @group User management
+ * Class UsersController
+ * @package App\Http\Controllers\Api
+ */
 class UsersController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all users
      *
      * @param Request $request
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
      */
     public function index(Request $request)
     {
@@ -29,12 +35,18 @@ class UsersController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a new user
      *
      * @param Request $request
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
+     * @bodyParam email string required The email address for the user
+     * @bodyParam first_name string required The users first name
+     * @bodyParam last_name string required The users last name
+     * @bodyParam password string The password for the user
+     * @bodyParam disabled boolean If the user is disabled or not
      */
     public function store(Request $request)
     {
@@ -50,12 +62,13 @@ class UsersController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display a user
      *
      * @param int $id
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
      */
     public function show($id)
     {
@@ -66,13 +79,19 @@ class UsersController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a user
      *
      * @param Request $request
      * @param int $id
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
+     * @bodyParam email string The email address for the user
+     * @bodyParam first_name string The users first name
+     * @bodyParam last_name string The users last name
+     * @bodyParam password string The password for the user
+     * @bodyParam disabled boolean If the user is disabled or not
      */
     public function update(Request $request, $id)
     {
@@ -84,12 +103,13 @@ class UsersController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Disable a user
      *
      * @param int $id
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
      */
     public function disable($id)
     {
@@ -101,12 +121,13 @@ class UsersController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Soft delete a user
      *
      * @param int $id
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
      */
     public function destroy($id)
     {

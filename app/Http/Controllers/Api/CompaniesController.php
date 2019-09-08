@@ -10,13 +10,19 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+/**
+ * @group Company management
+ * Class CompaniesController
+ * @package App\Http\Controllers\Api
+ */
 class CompaniesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all companies
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
      */
     public function index(Request $request)
     {
@@ -27,12 +33,15 @@ class CompaniesController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a new company
      *
      * @param Request $request
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
+     * @bodyParam name string required The company or business name
+     * @bodyParam size integer The amount of employees at the company
      */
     public function store(Request $request)
     {
@@ -43,12 +52,13 @@ class CompaniesController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display a company
      *
      * @param int $id
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
      */
     public function show($id)
     {
@@ -59,13 +69,16 @@ class CompaniesController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a company
      *
      * @param Request $request
      * @param int $id
+     * @bodyParam name string The company or business name
+     * @bodyParam size integer The amount of employees at the company
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
      */
     public function update(Request $request, $id)
     {
@@ -77,12 +90,13 @@ class CompaniesController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Soft delete a company
      *
      * @param int $id
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
      */
     public function destroy($id)
     {
