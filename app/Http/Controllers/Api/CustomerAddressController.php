@@ -12,7 +12,7 @@ use Illuminate\Http\Response;
 
 /**
  * @group Customer address management
- * Class CustomerAddressController
+ * Logic that determines how customers are linked to addresses
  * @package App\Http\Controllers\Api
  */
 class CustomerAddressController extends Controller

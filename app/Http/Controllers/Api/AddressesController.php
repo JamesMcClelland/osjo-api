@@ -12,7 +12,7 @@ use Illuminate\Http\Response;
 
 /**
  * @group Address management
- * Class AddressesController
+ * Addresses are used across multiple different models, they just contain where a company/person/user is located
  * @package App\Http\Controllers\Api
  */
 class AddressesController extends Controller
