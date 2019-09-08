@@ -10,7 +10,10 @@ use App\Http\Controllers\Controller;
 
 /**
  * @group Authentication functionality
- * Class AuthController
+ * OSJO Authentication is handled by JWT. First make a request to the login
+ * route with a username and password. THis will return you a JWT that is
+ * valid for the next 60 minutes. Include this as the Authorization header
+ * in your requests e.g "Authorization: Bearer authTokenhere"
  * @package App\Http\Controllers
  */
 class AuthController extends Controller

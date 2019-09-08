@@ -12,7 +12,7 @@ use Illuminate\Http\Response;
 
 /**
  * @group Customer person management
- * Class CustomerPersonController
+ * Logic that determines how customers are linked to people
  * @package App\Http\Controllers\Api
  */
 class CustomerPersonController extends Controller

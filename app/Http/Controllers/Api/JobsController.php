@@ -13,7 +13,9 @@ use Illuminate\Http\Response;
 
 /**
  * @group Job management
- * Class JobsController
+ * Jobs are the generic idea of tasks or actions that need to be taken
+ * by an individual, these are assigned to workers who then complete/edit/cancel
+ * that job.
  * @package App\Http\Controllers\Api
  */
 class JobsController extends Controller

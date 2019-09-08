@@ -12,7 +12,8 @@ use Illuminate\Http\Response;
 
 /**
  * @group Job schedule management
- * Class JobScheduleController
+ * The job schedule contains information about when a job is
+ * going to be done, and who it is going to be done by.
  * @package App\Http\Controllers\Api
  */
 class JobScheduleController extends Controller

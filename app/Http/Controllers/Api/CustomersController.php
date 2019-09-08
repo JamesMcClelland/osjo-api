@@ -12,7 +12,9 @@ use Illuminate\Http\Response;
 
 /**
  * @group Customer management
- * Class CustomersController
+ * Customers are the clients for our jobs. Theses customers are split from people so that
+ * we can have a customer which is a single client or a customer that is an entire business
+ * this way we can have multiple contacts for a business but a single customer.
  * @package App\Http\Controllers\Api
  */
 class CustomersController extends Controller

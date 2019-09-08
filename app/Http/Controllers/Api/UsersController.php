@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Auth;
 
 /**
  * @group User management
- * Class UsersController
+ * Users are defined as the people who are using the system, the primary types of user are:
+ * worker, admin, company admin, super admin
  * @package App\Http\Controllers\Api
  */
 class UsersController extends Controller

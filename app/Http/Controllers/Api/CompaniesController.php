@@ -12,7 +12,8 @@ use Illuminate\Http\Response;
 
 /**
  * @group Company management
- * Class CompaniesController
+ * Companies are entities that mean more than one company (or department)
+ * can be managed with the same system, TODO
  * @package App\Http\Controllers\Api
  */
 class CompaniesController extends Controller
