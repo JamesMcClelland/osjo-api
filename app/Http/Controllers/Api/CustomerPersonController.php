@@ -6,15 +6,23 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\CustomerPerson;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
+/**
+ * @group Customer person management
+ * Class CustomerPersonController
+ * @package App\Http\Controllers\Api
+ */
 class CustomerPersonController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all addresses
      *
-     * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
+     * @throws AuthorizationException
+     * @authenticated
      */
     public function index(Request $request)
     {
@@ -25,12 +33,15 @@ class CustomerPersonController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a new customer person
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
+     * @throws AuthorizationException
+     * @authenticated
+     * @bodyParam customer_id int required The customer to link together
+     * @bodyParam person_id int required The person to link together
      */
     public function store(Request $request)
     {
@@ -41,12 +52,13 @@ class CustomerPersonController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display a customer person
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
+     * @throws AuthorizationException
+     * @authenticated
      */
     public function show($id)
     {
@@ -57,13 +69,14 @@ class CustomerPersonController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a customer person
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
+     * @throws AuthorizationException
+     * @authenticated
      */
     public function update(Request $request, $id)
     {
@@ -75,12 +88,13 @@ class CustomerPersonController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Soft delete a customer person
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
+     * @throws AuthorizationException
+     * @authenticated
      */
     public function destroy($id)
     {

@@ -6,16 +6,23 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Address;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+/**
+ * @group Address management
+ * Class AddressesController
+ * @package App\Http\Controllers\Api
+ */
 class AddressesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all addresses
      *
      * @return Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws AuthorizationException
+     * @authenticated
      */
     public function index(Request $request)
     {
@@ -26,12 +33,19 @@ class AddressesController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a new address
      *
      * @param Request $request
      *
      * @return Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws AuthorizationException
+     * @authenticated
+     * @bodyParam organisation_name string The organisation or company name on the address
+     * @bodyParam line_1 string required First line of address
+     * @bodyParam line_2 string Second line of address
+     * @bodyParam town string Town or city
+     * @bodyParam county string County or district
+     * @bodyParam postcode string required Valid UK postcode
      */
     public function store(Request $request)
     {
@@ -42,12 +56,13 @@ class AddressesController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display an address
      *
      * @param int $id
      *
      * @return Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws AuthorizationException
+     * @authenticated
      */
     public function show($id)
     {
@@ -58,13 +73,20 @@ class AddressesController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update an address
      *
      * @param Request $request
      * @param int $id
      *
      * @return Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws AuthorizationException
+     * @authenticated
+     * @bodyParam organisation_name string The organisation or company name on the address
+     * @bodyParam line_1 string First line of address
+     * @bodyParam line_2 string Second line of address
+     * @bodyParam town string Town or city
+     * @bodyParam county string County or district
+     * @bodyParam postcode string Valid UK postcode
      */
     public function update(Request $request, $id)
     {
@@ -76,12 +98,13 @@ class AddressesController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Soft delete an address
      *
      * @param int $id
      *
      * @return Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws AuthorizationException
+     * @authenticated
      */
     public function destroy($id)
     {

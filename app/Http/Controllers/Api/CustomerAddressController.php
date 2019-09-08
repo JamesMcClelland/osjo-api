@@ -6,15 +6,23 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\CustomerAddress;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
+/**
+ * @group Customer address management
+ * Class CustomerAddressController
+ * @package App\Http\Controllers\Api
+ */
 class CustomerAddressController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all addresses
      *
-     * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
+     * @throws AuthorizationException
+     * @authenticated
      */
     public function index(Request $request)
     {
@@ -25,12 +33,15 @@ class CustomerAddressController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a customer address
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
+     * @throws AuthorizationException
+     * @authenticated
+     * @bodyParam customer_id int required The customer to link together
+     * @bodyParam address_id int required The address to link together
      */
     public function store(Request $request)
     {
@@ -41,12 +52,13 @@ class CustomerAddressController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display a customer address
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
+     * @throws AuthorizationException
+     * @authenticated
      */
     public function show($id)
     {
@@ -57,13 +69,16 @@ class CustomerAddressController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a customer address
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
+     * @throws AuthorizationException
+     * @authenticated
+     * @bodyParam customer_id int The customer to link together
+     * @bodyParam address_id int The address to link together
      */
     public function update(Request $request, $id)
     {
@@ -75,12 +90,13 @@ class CustomerAddressController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Soft delete a customer address
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @return Response
+     * @throws AuthorizationException
+     * @authenticated
      */
     public function destroy($id)
     {

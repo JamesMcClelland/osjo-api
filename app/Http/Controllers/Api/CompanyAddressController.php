@@ -10,13 +10,19 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+/**
+ * @group Company address management
+ * Class CompanyAddressController
+ * @package App\Http\Controllers\Api
+ */
 class CompanyAddressController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all addresses
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
      */
     public function index(Request $request)
     {
@@ -27,12 +33,15 @@ class CompanyAddressController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a new company address
      *
      * @param Request $request
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
+     * @bodyParam company_id int required The company to link together
+     * @bodyParam address_id int required The address to link together
      */
     public function store(Request $request)
     {
@@ -43,12 +52,13 @@ class CompanyAddressController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display a company address
      *
      * @param int $id
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
      */
     public function show($id)
     {
@@ -59,13 +69,16 @@ class CompanyAddressController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a company address
      *
      * @param Request $request
      * @param int $id
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
+     * @bodyParam company_id int The company to link together
+     * @bodyParam address_id int The address to link together
      */
     public function update(Request $request, $id)
     {
@@ -77,12 +90,13 @@ class CompanyAddressController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Soft delete a company address
      *
      * @param int $id
      *
      * @return Response
      * @throws AuthorizationException
+     * @authenticated
      */
     public function destroy($id)
     {

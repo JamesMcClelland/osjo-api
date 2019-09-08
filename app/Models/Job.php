@@ -20,7 +20,6 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $customer_person_id
  * @property int $customer_address_id
  * @property int $job_type_id
- * @property int $worker_id
  * @property Carbon $due_date
  * @property Carbon $completed_at
  * @property Carbon $created_at
@@ -45,7 +44,6 @@ class Job extends Eloquent
 
     protected $casts = [
 		'customer_id' => 'int',
-		'worker_id' => 'int',
 		'customer_person_id' => 'int',
 		'customer_address_id' => 'int',
 		'job_type_id' => 'int'
