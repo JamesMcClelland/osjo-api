@@ -43,6 +43,9 @@ class PermissionsTableSeeder extends Seeder
         'edit company_address',
         'view company_address',
         'create company_address',
+        'view address',
+        'edit address',
+        'create address',
     ];
 
     /**

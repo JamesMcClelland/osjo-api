@@ -37,7 +37,11 @@ class AuthController extends Controller
     {
         $credentials = request(['email', 'password']);
 
-        $user = User::where('email', request('email'))->firstOrFail();
+        $user = User::where('email', request('email'))->first();
+
+        if (!$user) {
+            return response()->json(['error' => 'Not Found - That account was not found'], 404);
+        }
 
         if ($user->disabled !== 0) {
             return response()->json(['error' => 'Unauthorized - This account is disabled'], 401);
